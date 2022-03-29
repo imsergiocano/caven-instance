@@ -12,4 +12,7 @@ phases:
     commands:
     - mkdir -p build
     - 'echo "Build arn: $CODEBUILD_BUILD_ARN\n Commit: $CODEBUILD_SOURCE_VERSION" > build.txt'
-
+    
+artifacts:
+  files:
+    - '**.*'
