@@ -1,9 +1,4 @@
 ---
 version: 0.2
 
-phases:
-  install:
-    commands:
-    - npm install -g serverless@2.59.0
-
 
