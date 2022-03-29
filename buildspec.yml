@@ -5,6 +5,6 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 10
+      nodejs: 14
     commands:
     - npm install -g serverless@2.59.0
