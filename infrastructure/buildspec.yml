@@ -5,3 +5,8 @@ phases:
   install:
     commands:
     - npm install -g serverless@2.59.0
+
+  pre_build:
+    commands:
+    - cd infrastructure
+    - echo "INFO:"
