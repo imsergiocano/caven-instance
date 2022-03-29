@@ -8,6 +8,10 @@ phases:
       nodejs: 14
     commands:
     - npm install -g serverless@2.59.0
+  pre_build:
+    commands:
+    - mkdir -p build
+    - 'echo "Build arn: $CODEBUILD_BUILD_ARN\n Commit: $CODEBUILD_SOURCE_VERSION" > build.txt'
 
 artifacts:
   files:
