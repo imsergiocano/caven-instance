@@ -5,7 +5,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 12
     commands:
     - npm install -g serverless@2.59.0
   pre_build:
