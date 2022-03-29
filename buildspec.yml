@@ -8,3 +8,8 @@ phases:
       nodejs: 14
     commands:
     - npm install -g serverless@2.59.0
+
+artifacts:
+  files:
+    - '**/*'
+    base-directory: 'build'
