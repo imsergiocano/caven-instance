@@ -1,0 +1,33 @@
+image=''
+tags=''
+sourceImage= 'caven-instance:latest'
+region= 'us-east-1'
+while getopts 'i:s:t:r:' flag
+do
+    case "${flag}" in
+        i) image="${OPTARG}" ;;
+        s) sourceImage="${OPTARG}" ;;
+        t) tags="${OPTARG}" ;;
+        r) region="${OPTARG}" ;;
+    esac
+done
+
+if [ "$image" = "" ]; then
+    echo "Target image cannot be empty"
+    exit 1
+fi
+if [ "$sourceImage" = "" ]; then
+    echo "Source image cannot be empty"
+    exit 1
+fi
+if [ "$tags" = "" ]; then
+    echo "Tags cannot be empty"
+    exit 1
+fi
+
+eval $(aws ecr get-login --no-include-email --region $region)
+arrTags=$(echo $tags | tr "," "\n")
+for tag in $arrTags; do
+    docker tag $sourceImage $image:$tag
+    docket push $image:$tag
+done

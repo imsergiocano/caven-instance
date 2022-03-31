@@ -1,6 +1,12 @@
 
 ---
 version: 0.2
+env:
+  variables:
+    DOCKER_IMAGE: 'caven-instance'
+    variables:
+    NET_SDK_URL: https://docs.snapcraft.io/installing-snapd/6735
+    NET_SDK_SHA: 
 
 phases:
   install:

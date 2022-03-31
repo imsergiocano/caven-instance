@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  caveninstance:
+    image: ${DOCKER_REGISTRY-}caveninstance
+    build:
+      context: .
+      dockerfile: src/CavenInstance/Dockerfile
+    volumes:
+    - ./src/:/src
+    ports:
+      - "9001:80"
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
