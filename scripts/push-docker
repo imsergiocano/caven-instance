@@ -29,5 +29,5 @@ eval $(aws ecr get-login --no-include-email --region $region)
 arrTags=$(echo $tags | tr "," "\n")
 for tag in $arrTags; do
     docker tag $sourceImage $image:$tag
-    docket push $image:$tag
+    docker push $image:$tag
 done
