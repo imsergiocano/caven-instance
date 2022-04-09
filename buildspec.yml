@@ -5,19 +5,18 @@ env:
   variables:
     DOCKER_IMAGE: 'caven-instance'
     variables:
-    NET_SDK_URL: https://docs.snapcraft.io/installing-snapd/6735
-    NET_SDK_SHA: 
+    NET_SDK_URL: https://download.visualstudio.microsoft.com/download/pr/c505a449-9ecf-4352-8629-56216f521616/bd6807340faae05b61de340c8bf161e8/dotnet-sdk-6.0.201-linux-x64.tar.gz
+    NET_SDK_SHA: a4d96b6ca2abb7d71cc2c64282f9bd07cedc52c03d8d6668346ae0cd33a9a670d7185ab0037c8f0ecd6c212141038ed9ea9b19a188d1df2aae10b2683ce818ce
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 12
     commands:
-    - npm install -g serverless@2.59.0
+    - (curl -SL $NET_SDK_URL --output dotnet.tar.gz && echo "$NET_SDK_SHA dotnet.tar.gz" | sha512sum -c - && rm -rf /usr/share/dotnet && mkdir -p /usr/share/dotnet && tar -zxf dotnet.tar.gz -C /usr/share/dotnet && rm dotnet.tar.gz)
   pre_build:
     commands:
     - mkdir -p build
     - 'echo "Build arn: $CODEBUILD_BUILD_ARN\n Commit: $CODEBUILD_SOURCE_VERSION" > build.txt'
+    - buildId=$(echo $CODEBUILD_BUILD_ID | cut -d ':' -f 2)
 
 artifacts:
   files:
