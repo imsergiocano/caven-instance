@@ -29,7 +29,7 @@ phases:
     commands:
     - accountId=$(aws sts get-caller-identity --output text | awk '{print $1}')
     - dockerImage="$accountId.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/caven-instance"
-    - './scripts/push-docker -i "$dockerImage' -s "caven-instance:latest" -t "latest,$buildId"'
+    - './scripts/push-docker -i "$dockerImage" -s "caven-instance:latest" -t "latest,$buildId"'
     - 'echo "$dockerImage:$buildId" > build/image.txt'
     - cp -r app build/
     - |
