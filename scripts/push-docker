@@ -1,7 +1,7 @@
 image=''
 tags=''
-sourceImage= 'caven-instance:latest'
-region= 'us-east-1'
+sourceImage='caven-instance:latest'
+region='us-east-1'
 while getopts 'i:s:t:r:' flag
 do
     case "${flag}" in
