@@ -17,7 +17,12 @@ phases:
     - mkdir -p build
     - 'echo "Build arn: $CODEBUILD_BUILD_ARN\n Commit: $CODEBUILD_SOURCE_VERSION" > build.txt'
     - buildId=$(echo $CODEBUILD_BUILD_ID | cut -d ':' -f 2)
-
+    - chmod -R +x scripts
+    - dotnet restore --verbosity minimal CavenInstance.sln 
+  build:
+    commands:
+    - dotnet new tool-manifest --force
+    
 artifacts:
   files:
     - '**.*'
