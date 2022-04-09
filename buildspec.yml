@@ -22,6 +22,8 @@ phases:
   build:
     commands:
     - dotnet new tool-manifest --force
+    - dotnet publish --no-restore-c Release - o app src/CavenInstance/CavenInstance.csproj
+    - docker build --build-arg "APP_PATH=app" -t caven-instance -f src/CavenInstance/Dockerfile .
     
 artifacts:
   files:
